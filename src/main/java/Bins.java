@@ -1,11 +1,13 @@
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class Bins {
     Integer binMin;
     Integer binMax;
-    HashMap<Integer,Integer> diceBin = new HashMap<>();
-
+    Map<Integer,Integer> diceBin = new HashMap<>();
+    private static final Logger LOGGER = Logger.getLogger(Bins.class.getName());
     public Bins(Integer binMin, Integer binMax){
 
 
@@ -13,6 +15,7 @@ public class Bins {
 
             this.diceBin.put(i,0);
         }
+
     }
 
     public Integer getBinValue(Integer binNumber){
@@ -20,8 +23,10 @@ public class Bins {
     }
 
 
-    public Integer getBin(Integer binNumber){
-        return diceBin.get(binNumber);
+    public Set<Integer> getBinKeySet(){
+        return diceBin.keySet();
+
+
     }
 
     public void incrementBin(Integer binNumber){

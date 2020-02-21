@@ -4,10 +4,10 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class Bins {
-    Integer binMin;
-    Integer binMax;
+
     Map<Integer,Integer> diceBin = new HashMap<>();
     private static final Logger LOGGER = Logger.getLogger(Bins.class.getName());
+
     public Bins(Integer binMin, Integer binMax){
 
 
@@ -19,7 +19,7 @@ public class Bins {
     }
 
     public Integer getBinValue(Integer binNumber){
-        return this.diceBin.get(binNumber);
+        return diceBin.get(binNumber);
     }
 
 
@@ -29,9 +29,13 @@ public class Bins {
 
     }
 
+    public Map<Integer, Integer>  getBinMap(){return this.diceBin;}
+
     public void incrementBin(Integer binNumber){
 
-        Integer count = getBinValue(binNumber)+1;
-        diceBin.replace(binNumber,count);
+        if (getBinMap().containsKey(binNumber)) {
+            Integer count = getBinValue(binNumber) + 1;
+            this.diceBin.put(binNumber, count);
+        }
     }
 }
